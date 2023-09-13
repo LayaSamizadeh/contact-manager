@@ -26,14 +26,14 @@ class Contacts extends Component {
     }
     render() {
 
-        const {contacts} = this.state; //destructuring
+        const { contacts } = this.state; //destructuring
         return (
-            <div>
+            <>
                 {contacts.map(contact =>
                     <Contact key={contact.id}
-                        contact ={contact}
-                    /> )}
-            </div>
+                        contact={contact}
+                    />)}
+            </>
         )
     }
 }

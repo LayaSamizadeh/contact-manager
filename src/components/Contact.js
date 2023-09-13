@@ -2,28 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 class Contact extends Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = {}
-
-  //   this.onShowClick = this.onShowClick.bind(this);  
-  //   /*for using this inside a functional component of class */
-  // }
-
-  // static propTypes = {
-  //   name: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   phone: PropTypes.string.isRequired,
-  // };
-
-  state = {}
+  state = {
+    showContactInfo: true
+  }
 
   onShowClick = e => {        // arrow function do the same binding this 
-    console.log(e.target);
+    this.setState({ showContactInfo: !this.state.showContactInfo })
   }
 
   render() {
     const { name, email, phone } = this.props.contact;
+    const { showContactInfo } = this.state;
 
     // for using this inside a functional component of class : onClick={this.onShowClick.bind(this)}
 
@@ -32,10 +21,12 @@ class Contact extends Component {
         <h4>{name}
           <i onClick={this.onShowClick} className=" fas fa-sort-down"></i>
         </h4>
-        <ul className="list-group">
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-        </ul>
+        {showContactInfo ? (
+          <ul className="list-group">
+            <li className="list-group-item">Email: {email}</li>
+            <li className="list-group-item">Phone: {phone}</li>
+          </ul>)
+          : null}
       </div >
     );
   }
