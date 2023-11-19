@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Contact from "./components/Contact";
+import Contact from "./components/contacts/Contact";
 
 const Context = React.createContext();
 
