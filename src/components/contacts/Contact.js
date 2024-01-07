@@ -60,7 +60,7 @@ Contact.propTypes = {
   // email: PropTypes.string.isRequired,
   // phone: PropTypes.string.isRequired,
   contact: PropTypes.object.isRequired,
-  deleteClickHandler: PropTypes.func.isRequired
+  // deleteClickHandler: PropTypes.func.isRequired
 };
 
 export default Contact;
