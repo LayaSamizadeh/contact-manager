@@ -2,7 +2,17 @@ import React, { Component } from 'react'
 import { Consumer } from '../../context';
 import { v4 as uuid } from 'uuid';
 import TextInputGroup from '../layout/TextInputGroup';
+import { useNavigate } from 'react-router-dom';
 
+const withNavigation = (WrappedComponent) => {
+    return (props) => {
+        const navigate = useNavigate();
+
+        return (
+            <WrappedComponent navigate={navigate} {...props} />
+        );
+    };
+};
 class AddContact extends Component {
 
     state = {
@@ -12,23 +22,25 @@ class AddContact extends Component {
         errors: {}
     };
 
+
+
     onSumbit = (dispatch, e) => {
         e.preventDefault();
 
         const { name, email, phone } = this.state;
 
-        if (name === ''){
-            this.setState({errors: { name:'name is required'}});
+        if (name === '') {
+            this.setState({ errors: { name: 'name is required' } });
             return
         }
 
-        if (email === ''){
-            this.setState({errors: { email:'Email is required'}});
+        if (email === '') {
+            this.setState({ errors: { email: 'Email is required' } });
             return
         }
 
-        if (phone === ''){
-            this.setState({errors: { phone:'Phone is required'}});
+        if (phone === '') {
+            this.setState({ errors: { phone: 'Phone is required' } });
             return
         }
 
@@ -40,8 +52,10 @@ class AddContact extends Component {
             name: '',
             email: '',
             phone: '',
-            errors:{}
+            errors: {}
         })
+
+        this.props.navigate('/')
 
     }
 
@@ -66,7 +80,7 @@ class AddContact extends Component {
                                         placeholder="Enter Name..."
                                         value={name}
                                         onChange={this.onChange}
-                                        error= {errors.name}
+                                        error={errors.name}
                                     />
                                     <TextInputGroup
                                         label="Email"
@@ -75,7 +89,7 @@ class AddContact extends Component {
                                         placeholder="Enter Email..."
                                         value={email}
                                         onChange={this.onChange}
-                                        error= {errors.emai}
+                                        error={errors.emai}
                                     />
                                     <TextInputGroup
                                         label="Phone"
@@ -83,7 +97,7 @@ class AddContact extends Component {
                                         placeholder="Enter Phone..."
                                         value={phone}
                                         onChange={this.onChange}
-                                        error= {errors.phone}
+                                        error={errors.phone}
                                     />
                                     <input type="submit" value="Add Contact" className="btn btn-light btn-block" />
                                 </form>
@@ -97,4 +111,4 @@ class AddContact extends Component {
     }
 }
 
-export default AddContact;
+export default withNavigation(AddContact);
