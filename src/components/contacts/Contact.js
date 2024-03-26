@@ -4,7 +4,7 @@ import { Consumer } from "../../context";
 class Contact extends Component {
 
   state = {
-    showContactInfo: true
+    showContactInfo: false
   }
 
   onShowClick = e => {        // arrow function do the same binding this 
@@ -29,14 +29,14 @@ class Contact extends Component {
           const {dispatch} = value
           return (
             <div className="card card-body mb-3">
-              <h4>{name}
+              <h4 className="d-flex align-items-center">{name}
                 <i
                   onClick={this.onShowClick}
-                  className="fas fa-sort-down"
+                  className="fas fa-sort-down ms-1"
                   style={{ cursor: "pointer" }}></i>
                 <i
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
-                  className="fas fa-times"
+                  className="fas fa-times ms-auto  "
                   style={{ cursor: "pointer", float: "right", color: "red" }}
                 ></i>
               </h4>
