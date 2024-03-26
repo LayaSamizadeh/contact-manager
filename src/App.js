@@ -4,6 +4,7 @@ import Contacts from "./components/contacts/Contacts";
 import Header from "./components/layout/Header";
 import AddContact from "./components/contacts/AddContact";
 import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "./context";
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route exact path="/contact/add" Component={AddContact} />
               <Route exact path="/about/:id" element={<About />} />
               <Route exact path="/about" element={<About />} />
+              <Route path="*" Component={NotFound}/>
             </Routes>
           </div>
         </div>
